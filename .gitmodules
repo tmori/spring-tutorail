@@ -1,0 +1,3 @@
+[submodule "project/front"]
+	path = project/front
+	url = git@github.com:tmori/vue-tutorial.git
