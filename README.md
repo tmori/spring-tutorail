@@ -7,4 +7,8 @@
 - Maven 4.0.0
 
 # Tutorial
-see: https://tech.chakapoko.com/java/spring/spring-boot-thymeleaf.html
+see: 
+ - sample program origin
+   - https://tech.chakapoko.com/java/spring/spring-boot-thymeleaf.html
+ - annotation explanation
+   - https://qiita.com/TEBASAKI/items/267c261db17f178e33eb
