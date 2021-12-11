@@ -1,41 +1,62 @@
 package com.example;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+import java.io.Serializable;
 
 @RestController
 public class ExampleRestController {
-    @RequestMapping(value = "/latest", method = RequestMethod.GET)
-    public Entry getLatestEntry() {
-        System.out.println("ENTER: getLatestEntry()");
-        Entry entryData = new Entry();
+    @RequestMapping(value = "/api/translate", method = RequestMethod.POST)
+    public ResponseTranslate postTranslate(@RequestBody String request) {
+        System.out.println("ENTER: postTranslate(" + request  + ")");
+        ResponseTranslate res = new ResponseTranslate();
 
-        entryData.setTitle("VueRouterを使ってみた");
-        entryData.setContent("VueRouterで簡単にページルーティングができました");
-        return entryData;
+        res.setDetectedLanguage("英語");
+        res.setTranslatedLanguage("日本語");
+        res.setTranslatedText(request);
+        return res;
+    }
+    private class RequestTranslate implements Serializable {
+        private static final long serialVersionUID = 1L;
+        private String target;
+        public String getTarget()
+        {
+            return this.target;
+        }
+        public void setTarget(String in)
+        {
+            this.target = in;
+        }
     }
     /**
      * ブログ記事クラス
      */
-    private class Entry{
-        private String title;
-        private String content;
+    private class ResponseTranslate {
+        private String detectedLanguage;
+        private String translatedText;
+        private String translatedLanguage;
 
-        public String getTitle() {
-            return title;
+        public String getDetectedLanguage() {
+            return this.detectedLanguage;
+        }
+        public String getTranslatedText() {
+            return this.translatedText;
+        }
+        public String getTranslatedLanguage() {
+            return this.translatedLanguage;
         }
 
-        public void setTitle(String title) {
-            this.title = title;
+        public void setDetectedLanguage(String in) {
+            this.detectedLanguage = in;
+        }
+        public void setTranslatedText(String in) {
+            this.translatedText = in;
+        }
+        public void setTranslatedLanguage(String in) {
+            this.translatedLanguage = in;
         }
 
-        public String getContent() {
-            return content;
-        }
-
-        public void setContent(String content) {
-            this.content = content;
-        }
     }
 }
