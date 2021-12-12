@@ -1,0 +1,66 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+  license:
+    name: MIT
+servers:
+  - url: http://petstore.swagger.io/
+paths:
+  /api/translate:
+    post:
+      summary: post translation
+      operationId: postTranslation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TranslationRequest'
+        required: true      
+      responses:
+        '200':
+          description: translation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TranslationResponse"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+components:
+  schemas:
+    TranslationRequest:
+      required:
+        - target
+      properties:
+        target:
+          type: string
+          example: "hello world"
+    TranslationResponse:
+      required:
+        - detectedLanguage
+        - translatedText
+        - translatedLanguage
+      properties:
+        detectedLanguage:
+          type: string
+          example: "英語"
+        translatedText:
+          type: string
+          example: "はろーわーるど"
+        translatedLanguage:
+          type: string
+          example: "日本語"
+    Error:
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string

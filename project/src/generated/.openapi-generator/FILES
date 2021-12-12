@@ -1,0 +1,8 @@
+.openapi-generator-ignore
+README.md
+pom.xml
+src/main/java/com/baitando/openapi/samples/gen/springbootserver/api/ApiApi.java
+src/main/java/com/baitando/openapi/samples/gen/springbootserver/api/ApiUtil.java
+src/main/java/com/baitando/openapi/samples/gen/springbootserver/model/ErrorDto.java
+src/main/java/com/baitando/openapi/samples/gen/springbootserver/model/TranslationRequestDto.java
+src/main/java/com/baitando/openapi/samples/gen/springbootserver/model/TranslationResponseDto.java
